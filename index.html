@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citadel Project Business - Engenharia Multidisciplinar para Indústria 4.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span>CITADEL</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#inicio" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="#servicos" class="nav-link">Serviços</a></li>
+                <li class="nav-item"><a href="#projetos" class="nav-link">Projetos</a></li>
+                <li class="nav-item"><a href="#materiais" class="nav-link">Materiais</a></li>
+                <li class="nav-item"><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1 class="hero-title">Engenharia Multidisciplinar para Indústria 4.0</h1>
+                <p class="hero-subtitle">Transformamos sua operação com soluções inovadoras em projetos elétricos, mecânicos e de segurança industrial.<br>Elevamos sua produtividade e conformidade aos mais altos padrões.</p>
+                <button class="btn-primary" onclick="scrollToSection('contato')">Solicitar Orçamento</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="services section" id="servicos">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Consultoria Industrial</h3>
+                    <p>Diagnóstico e soluções sob medida para otimização de processos e conformidade.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3>Projetos de Engenharia</h3>
+                    <p>Concepção, projetos básicos e detalhados em elétrica, mecânica e civil.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Gerenciamento de Projetos</h3>
+                    <p>Planejamento, acompanhamento e controle completo do ciclo de vida do projeto.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Segurança Industrial</h3>
+                    <p>Adequação às normas NR10, NR12 e implementação de sistemas SPDA.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos -->
+    <section class="projects section" id="projetos">
+        <div class="container">
+            <h2 class="section-title">Projetos em Destaque</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x250?text=Projeto+1" alt="Upgrade Elétrico Mina X">
+                        <div class="project-overlay">
+                            <span>Ver detalhes</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Upgrade Elétrico Mina X</h3>
+                        <p>Modernização do sistema elétrico com redução de 25% no consumo.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x250?text=Projeto+2" alt="Implantação NR12 Siderurgia Y">
+                        <div class="project-overlay">
+                            <span>Ver detalhes</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Implantação NR12 Siderurgia Y</h3>
+                        <p>Adequação completa de 18 máquinas críticas em tempo recorde.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x250?text=Projeto+3" alt="Estudo de SPDA Planta Z">
+                        <div class="project-overlay">
+                            <span>Ver detalhes</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Estudo de SPDA Planta Z</h3>
+                        <p>Projeto e execução de proteção contra descargas atmosféricas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materiais Ricos -->
+    <section class="materials section" id="materiais">
+        <div class="container">
+            <div class="materials-content">
+                <h2 class="section-title">Materiais Ricos</h2>
+                <div class="materials-callout">
+                    <h3>E-book Gratuito: Guia Completo NR10/NR12</h3>
+                    <p>Baixe nosso material exclusivo e aprenda as melhores práticas para adequação às normas de segurança industrial.</p>
+                    <form class="materials-form" id="materials-form">
+                        <input type="text" placeholder="Nome completo" required>
+                        <input type="email" placeholder="E-mail profissional" required>
+                        <input type="text" placeholder="Empresa" required>
+                        <button type="submit" class="btn-primary">Baixar E-book</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nós -->
+    <section class="about section" id="sobre">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Sobre Nós</h2>
+                    <p>A Citadel Project Business é uma empresa de engenharia multidisciplinar especializada em soluções para a indústria 4.0. Com mais de 10 anos de experiência, atendemos grandes empresas dos setores minerário, siderúrgico e industrial.</p>
+                    
+                    <div class="about-values">
+                        <div class="value-item">
+                            <h4>Missão</h4>
+                            <p>Transformar operações industriais através de soluções de engenharia inovadoras e sustentáveis.</p>
+                        </div>
+                        <div class="value-item">
+                            <h4>Visão</h4>
+                            <p>Ser reconhecida como líder em projetos de engenharia para indústria 4.0 no Brasil.</p>
+                        </div>
+                        <div class="value-item">
+                            <h4>Valores</h4>
+                            <ul>
+                                <li>Excelência técnica</li>
+                                <li>Inovação constante</li>
+                                <li>Comprometimento com prazos</li>
+                                <li>Segurança em primeiro lugar</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/500x400?text=Sobre+N%C3%B3s" alt="Equipe Citadel">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="testimonials section">
+        <div class="container">
+            <h2 class="section-title">O que nossos clientes dizem</h2>
+            <div class="testimonials-slider" id="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"A Citadel superou nossas expectativas reduzindo custos e elevando a segurança."</p>
+                        <div class="testimonial-author">
+                            <strong>João Silva</strong>
+                            <span>Gerente de Engenharia, Alfa Mining</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Equipe altamente técnica e comprometida com prazos."</p>
+                        <div class="testimonial-author">
+                            <strong>Maria Souza</strong>
+                            <span>Coordenadora de Projetos, Beta Steel</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Excelente parceria para soluções de alta complexidade."</p>
+                        <div class="testimonial-author">
+                            <strong>Carlos Lima</strong>
+                            <span>Diretor de Operações, Gamma Industrial</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Pronto para elevar sua operação?</h2>
+            <p>Entre em contato conosco e descubra como podemos transformar seus processos industriais.</p>
+            <button class="btn-secondary" onclick="scrollToSection('contato')">Falar com Especialista</button>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contact section" id="contato">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="nome" placeholder="Nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="empresa" placeholder="Empresa" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="E-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="telefone" placeholder="Telefone" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="mensagem" placeholder="Mensagem" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Enviar Mensagem</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Rua das Indústrias, 123<br>Distrito Industrial, Belo Horizonte - MG</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>(31) 3333-4444</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>contato@citadelproject.com.br</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <p>Segunda a Sexta: 8h às 18h</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>CITADEL</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#inicio">Início</a>
+                    <a href="#servicos">Serviços</a>
+                    <a href="#projetos">Projetos</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#contato">Contato</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Citadel Project Business. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-button" id="chatbot-button">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Modal Chatbot -->
+    <div class="modal" id="chatbot-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Assistente Virtual</h3>
+            <p>Em breve, nosso assistente online estará disponível para atendê-lo!</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

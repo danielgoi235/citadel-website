@@ -1,0 +1,85 @@
+# Netlify Configuration for Citadel Project Business
+# Static site deployment
+
+[build]
+  # No build step needed - site is 100% static HTML/CSS/JS
+  command = "echo 'Static site - no build required'"
+  publish = "/"
+  environment = { NODE_VERSION = "20.0.0" }
+
+# Production context
+[context.production]
+  environment = {
+    SITE_URL = "https://citadelproject.com.br"
+  }
+
+# Preview context (branch deploys)
+[context.deploy-preview]
+  environment = {
+    SITE_URL = "https://deploy-preview-$DEPLOY_ID--citadel-website.netlify.app"
+  }
+
+# Branch context (staging)
+[context.development]
+  environment = {
+    SITE_URL = "https://development--citadel-website.netlify.app"
+  }
+
+# Redirects - SPA routing (if needed in future)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+# Headers - Security + Performance
+[[headers]]
+  for = "/"
+  [headers.values]
+    # Security Headers
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+    # Performance
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+# Cache assets for longer period
+[[headers]]
+  for = "/(js|css|img)/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache-busting for HTML (always fresh)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Form submission endpoint (will be called via JavaScript)
+[[redirects]]
+  from = "/api/contact"
+  to = "https://citadel-backend.onrender.com/api/contact"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/leads"
+  to = "https://citadel-backend.onrender.com/api/leads"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/webhooks/*"
+  to = "https://citadel-backend.onrender.com/api/webhooks/:splat"
+  status = 200
+  force = true
+
+# Rewrite for service-worker or future PWA features
+[[headers]]
+  for = "/service-worker.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Service-Worker-Allowed = "/"

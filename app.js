@@ -1,7 +1,7 @@
 // ================== CONFIGURATION ==================
 const API_BASE_URL = window.location.hostname === 'localhost'
   ? 'http://localhost:3000'
-  : 'https://citadel-backend.onrender.com';
+  : 'https://citadel-backend-cyan.vercel.app';
 
 // ================== DOM ELEMENTS ==================
 const hamburger = document.getElementById('hamburger');

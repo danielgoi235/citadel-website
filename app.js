@@ -1,9 +1,4 @@
-// ================== CONFIGURATION ==================
-const API_BASE_URL = window.location.hostname === 'localhost'
-  ? 'http://localhost:3000'
-  : 'https://citadel-backend-cyan.vercel.app';
-
-// ================== DOM ELEMENTS ==================
+// DOM Elements
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
 const chatbotButton = document.getElementById('chatbot-button');
@@ -126,144 +121,44 @@ window.addEventListener('click', (event) => {
     }
 });
 
-// Materials Form Submission (E-book Download)
-materialsForm.addEventListener('submit', async (e) => {
+// Materials Form Submission
+materialsForm.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    try {
-        // Extract form values
-        const formData = new FormData(materialsForm);
-        const nome = formData.get('nome') || e.target.querySelector('input[type="text"]').value;
-        const email = formData.get('email') || e.target.querySelector('input[type="email"]').value;
-        const empresa = formData.get('empresa') || e.target.querySelectorAll('input[type="text"]')[1].value;
-
-        // Validate inputs
-        if (!nome || !email || !empresa) {
-            showErrorMessage('Por favor, preencha todos os campos.');
-            return;
-        }
-
-        // Validate email format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            showErrorMessage('E-mail inválido. Por favor, verifique.');
-            return;
-        }
-
-        // Show loading state
-        showMessage('Processando sua solicitação...', 'info');
-
-        // Send to backend API
-        const response = await fetch(`${API_BASE_URL}/api/leads`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name: nome,
-                email: email,
-                company: empresa,
-                service_interest: 'E-book NR10/NR12'
-            })
-        });
-
-        if (response.ok) {
-            const result = await response.json();
-            showSuccessMessage('✅ E-book enviado com sucesso! Verifique seu e-mail para download.');
-
-            // Track event for Google Analytics
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'lead_captured', {
-                    'event_category': 'lead',
-                    'event_label': 'ebook_download',
-                    'lead_quality': result.lead?.lead_quality || 0
-                });
-            }
-
-            // Reset form
-            materialsForm.reset();
-        } else {
-            const error = await response.json();
-            if (response.status === 409) {
-                showMessage('Este e-mail já está registrado em nosso sistema.', 'info');
-            } else {
-                showErrorMessage('Erro ao processar sua solicitação. Tente novamente.');
-            }
-        }
-    } catch (error) {
-        console.error('Erro ao enviar formulário de materiais:', error);
-        showErrorMessage('Erro de conexão. Verifique sua internet e tente novamente.');
+    
+    const formData = new FormData(materialsForm);
+    const nome = formData.get('nome') || e.target.querySelector('input[type="text"]').value;
+    const email = formData.get('email') || e.target.querySelector('input[type="email"]').value;
+    const empresa = formData.get('empresa') || e.target.querySelectorAll('input[type="text"]')[1].value;
+    
+    if (nome && email && empresa) {
+        // Show success message
+        showSuccessMessage('E-book enviado com sucesso! Verifique seu e-mail.');
+        
+        // Reset form
+        materialsForm.reset();
+    } else {
+        showErrorMessage('Por favor, preencha todos os campos.');
     }
 });
 
 // Contact Form Submission
-contactForm.addEventListener('submit', async (e) => {
+contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    try {
-        // Extract form values
-        const nome = document.getElementById('nome').value.trim();
-        const empresa = document.getElementById('empresa').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const telefone = document.getElementById('telefone').value.trim();
-        const mensagem = document.getElementById('mensagem').value.trim();
-
-        // Validate inputs
-        if (!nome || !empresa || !email || !telefone || !mensagem) {
-            showErrorMessage('Por favor, preencha todos os campos.');
-            return;
-        }
-
-        // Validate email format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            showErrorMessage('E-mail inválido. Por favor, verifique.');
-            return;
-        }
-
-        // Validate message length
-        if (mensagem.length < 10) {
-            showErrorMessage('A mensagem deve ter pelo menos 10 caracteres.');
-            return;
-        }
-
-        // Show loading state
-        showMessage('Enviando seu contato...', 'info');
-
-        // Send to backend API
-        const response = await fetch(`${API_BASE_URL}/api/contact`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name: nome,
-                company: empresa,
-                email: email,
-                phone: telefone,
-                message: mensagem
-            })
-        });
-
-        if (response.ok) {
-            const result = await response.json();
-            showSuccessMessage('✅ Mensagem enviada com sucesso! Entraremos em contato em breve.');
-
-            // Track event for Google Analytics
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'contact_submitted', {
-                    'event_category': 'engagement',
-                    'event_label': 'contact_form'
-                });
-            }
-
-            // Reset form
-            contactForm.reset();
-
-            // Scroll to top after success
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-            showErrorMessage('Erro ao enviar sua mensagem. Tente novamente.');
-        }
-    } catch (error) {
-        console.error('Erro ao enviar formulário de contato:', error);
-        showErrorMessage('Erro de conexão. Verifique sua internet e tente novamente.');
+    
+    const nome = document.getElementById('nome').value;
+    const empresa = document.getElementById('empresa').value;
+    const email = document.getElementById('email').value;
+    const telefone = document.getElementById('telefone').value;
+    const mensagem = document.getElementById('mensagem').value;
+    
+    if (nome && empresa && email && telefone && mensagem) {
+        // Show success message
+        showSuccessMessage('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+        
+        // Reset form
+        contactForm.reset();
+    } else {
+        showErrorMessage('Por favor, preencha todos os campos.');
     }
 });
 
